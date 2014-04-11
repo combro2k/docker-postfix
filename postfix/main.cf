@@ -43,8 +43,8 @@ inet_interfaces = all
 
 # Virtual
 
-virtual_uid_maps        = static:1500
-virtual_gid_maps        = static:1500
+virtual_uid_maps        = static:1000
+virtual_gid_maps        = static:1000
 virtual_mailbox_base    = /var/vmail
 virtual_mailbox_maps    = mysql:/etc/postfix/mysql-virtual-mailbox-maps.cf
 virtual_alias_maps      = mysql:/etc/postfix/mysql-virtual-alias-maps.cf
@@ -63,7 +63,7 @@ virtual_transport = procmail
 procmail_destination_recipient_limit = 1
 
 # Use amavis for virus and spam scanning
-# content_filter = smtp-amavis:[127.0.0.1]:10024
+content_filter = smtp-amavis:[127.0.0.1]:10024
 
 # Header manipulation
 # --------------------------------------
