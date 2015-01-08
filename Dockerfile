@@ -9,7 +9,7 @@ RUN bash -c 'debconf-set-selections <<< "postfix postfix/main_mailer_type string
 RUN bash -c 'debconf-set-selections <<< "postfix postfix/mailname string mail.example.com"'
 
 RUN apt-get install -yq libberkeleydb-perl libnet-dns-perl libnet-server-perl libnet-rblclient-perl
-RUN apt-get install -yq postfix postfix-mysql postgrey rsyslog procmail
+RUN apt-get install -yq postfix postfix-mysql postgrey rsyslog
 RUN apt-get install -yq dovecot-core dovecot-imapd dovecot-managesieved dovecot-mysql dovecot-pop3d dovecot-sieve
 RUN apt-get install -yq cron
 RUN apt-get install -yq amavisd-new spamassassin clamav-daemon \
