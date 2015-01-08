@@ -48,8 +48,9 @@ RUN chown root:root /etc/procmailrc
 ADD dovecot/sieve /etc/dovecot/sieve
 ADD dovecot/conf.d/10-master.conf /etc/dovecot/conf.d/10-master.conf
 ADD dovecot/conf.d/10-ssl.conf /etc/dovecot/conf.d/10-ssl.conf
-ADD dovecot/conf.d/10-managesieve.conf /etc/dovecot/conf.d/10-managesieve.conf
-ADD dovecot/conf.d/10-sieve.conf /etc/dovecot/conf.d/10-sieve.conf
+ADD dovecot/conf.d/20-managesieve.conf /etc/dovecot/conf.d/20-managesieve.conf
+ADD dovecot/conf.d/90-sieve.conf /etc/dovecot/conf.d/90-sieve.conf
+
 
 ADD run /usr/local/bin/run
 RUN chmod +x /usr/local/bin/run
