@@ -64,7 +64,7 @@ RUN sed -i "s#^POSTGREY_OPTS\=\"--inet\=10023\"#POSTGREY_OPTS=\"--unix=/var/spoo
 ADD run /usr/local/bin/run
 RUN chmod +x /usr/local/bin/run
 
-EXPOSE 25
+EXPOSE 587 25 465 4190 995 993 110 143
 VOLUME ["/var/vmail"]
 
 CMD ["/usr/local/bin/run"]
