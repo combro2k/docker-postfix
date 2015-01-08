@@ -35,6 +35,7 @@ RUN sed -i "s/ENABLED\=0/ENABLED=1/g" /etc/default/spamassassin && \
 ADD amavisd/50-user /etc/amavis/conf.d/50-user
 RUN chown root:root /etc/amavis/conf.d/50-user
 
+# Postfix
 ADD postfix/header_checks /etc/postfix/header_checks
 ADD postfix/main.cf /etc/postfix/main.cf
 ADD postfix/master.cf /etc/postfix/master.cf
@@ -45,12 +46,16 @@ ADD postfix/mysql-virtual-domains-maps.cf /etc/postfix/mysql-virtual-domains-map
 ADD procmail/procmailrc /etc/procmailrc
 RUN chown root:root /etc/procmailrc
 
+# Dovecot
 ADD dovecot/sieve /etc/dovecot/sieve
 ADD dovecot/conf.d/10-master.conf /etc/dovecot/conf.d/10-master.conf
 ADD dovecot/conf.d/10-ssl.conf /etc/dovecot/conf.d/10-ssl.conf
 ADD dovecot/conf.d/20-managesieve.conf /etc/dovecot/conf.d/20-managesieve.conf
 ADD dovecot/conf.d/90-sieve.conf /etc/dovecot/conf.d/90-sieve.conf
 
+# Postgrey
+RUN mkdir /var/spool/postfix/postgrey
+RUN sed -i "s#^POSTGREY_OPTS\=\"--inet\=10023\"#POSTGREY_OPTS=\"--unix=/var/spool/postfix/postgrey/socket --delay=300\"#g" /etc/default/postgrey
 
 ADD run /usr/local/bin/run
 RUN chmod +x /usr/local/bin/run

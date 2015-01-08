@@ -24,7 +24,8 @@ service spamassassin start
 service clamav-daemon start
 service clamav-freshclam start
 service amavis start
+service postgrey start
+dovecot
 service postfix start
-#service dovecot start
 
 tail -F /var/log/mail.log
