@@ -141,8 +141,8 @@ smtp-amavis     unix    -       -       -       -       2       smtp
 
 # Integration with Dovecot - hand mail over to it for local delivery, and
 # run the process under the vmail user and mail group.
-# dovecot   unix  -       n       n       -       -       pipe
-#   flags=DRhu user=vmail:vmail argv=/usr/lib/dovecot/dovecot-lda -f ${sender} -a ${recipient} -d ${user}@${nexthop}
+dovecot   unix  -       n       n       -       -       pipe
+   flags=DRhu user=vmail:vmail argv=/usr/lib/dovecot/dovecot-lda -f ${sender} -a ${recipient} -d ${user}@${nexthop}
 
 procmail unix - n n - - pipe
   flags=R user=vmail argv=/usr/bin/procmail -t -m USER=${user} DOMAIN=${nexthop} /etc/procmailrc

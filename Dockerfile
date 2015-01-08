@@ -54,6 +54,7 @@ ADD dovecot/conf.d/15-lda.conf /etc/dovecot/conf.d/15-lda.conf
 ADD dovecot/conf.d/15-mailboxes.conf /etc/dovecot/conf.d/15-mailboxes.conf
 ADD dovecot/conf.d/20-managesieve.conf /etc/dovecot/conf.d/20-managesieve.conf
 ADD dovecot/conf.d/90-sieve.conf /etc/dovecot/conf.d/90-sieve.conf
+ADD dovecot/dovecot-sql.conf.ext /etc/dovecot/dovecot-sql.conf.ext
 
 # Postgrey
 RUN mkdir /var/spool/postfix/postgrey
