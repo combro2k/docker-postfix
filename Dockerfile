@@ -11,7 +11,6 @@ RUN bash -c 'debconf-set-selections <<< "postfix postfix/mailname string mail.ex
 RUN apt-get install -yq libberkeleydb-perl libnet-dns-perl libnet-server-perl libnet-rblclient-perl
 RUN apt-get install -yq postfix postfix-mysql postgrey rsyslog procmail
 RUN apt-get install -yq dovecot-core dovecot-imapd dovecot-managesieved dovecot-mysql dovecot-pop3d dovecot-sieve
-RUN apt-get install -yq mailman
 RUN apt-get install -yq cron
 RUN apt-get install -yq amavisd-new spamassassin clamav-daemon \
                        pyzor razor libencode-detect-perl libdbi-perl libdbd-mysql-perl \
@@ -45,6 +44,12 @@ ADD postfix/mysql-virtual-alias-maps.cf   /etc/postfix/mysql-virtual-alias-maps.
 ADD postfix/mysql-virtual-domains-maps.cf /etc/postfix/mysql-virtual-domains-maps.cf
 ADD procmail/procmailrc /etc/procmailrc
 RUN chown root:root /etc/procmailrc
+
+ADD dovecot/sieve /etc/dovecot/sieve
+ADD dovecot/conf.d/10-master.conf /etc/dovecot/conf.d/10-master.conf
+ADD dovecot/conf.d/10-ssl.conf /etc/dovecot/conf.d/10-ssl.conf
+ADD dovecot/conf.d/10-managesieve.conf /etc/dovecot/conf.d/10-managesieve.conf
+ADD dovecot/conf.d/10-sieve.conf /etc/dovecot/conf.d/10-sieve.conf
 
 ADD run /usr/local/bin/run
 RUN chmod +x /usr/local/bin/run
