@@ -4,7 +4,7 @@ set -e
 sed -i "s/__REPLACE_DATABASE_HOST__/${MYSQL_PORT_3306_TCP_ADDR}/g" /etc/postfix/mysql-virtual-alias-maps.cf
 sed -i "s/__REPLACE_DATABASE_PORT__/${MYSQL_PORT_3306_TCP_PORT}/g" /etc/postfix/mysql-virtual-alias-maps.cf
 sed -i "s/__REPLACE_DATABASE_PASSWORD__/${POSTFIX_MYSQL_PASSWORD}/g" /etc/postfix/mysql-virtual-alias-maps.cf
-sed -i "s/mail.example.com/${HOSTNAME}g" /etc/postfix/main.cf
+sed -i "s/mail.example.com/${HOSTNAME}/g" /etc/postfix/main.cf
 
 sed -i "s/__REPLACE_DATABASE_HOST__/${MYSQL_PORT_3306_TCP_ADDR}/g" /etc/postfix/mysql-virtual-domains-maps.cf
 sed -i "s/__REPLACE_DATABASE_PORT__/${MYSQL_PORT_3306_TCP_PORT}/g" /etc/postfix/mysql-virtual-domains-maps.cf
@@ -28,4 +28,3 @@ service postfix start
 service dovecot start
 
 tail -F /var/log/mail.log
-
